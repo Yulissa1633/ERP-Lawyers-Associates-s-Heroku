@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+
+       <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+  <p><img aling="left" width="150px" src="../../assets/img/logo_ERP.png"></p>
+
+  <div class="flex-container">
+    <div class="flex-item-left">
+      <div class="col-md-6">
+        <p class="p-primary">Ingresa las Credenciales</p>
+        <div class="form-group">
+          <div>
+            <input type="text" class="form-control" name="id" id="id" [(ngModel)]="userData.id" aria-describedby="helpId"
+                placeholder="Usuario">
+          </div>
+          <br>
+          <div>
+            <input type="text" class="form-control" name="password" id="password" [(ngModel)]="userData.password" type="password" aria-describedby="helpId"
+                placeholder="Contraseña">
+          </div>
+        </div>
+        <hr size="10px">
+        <div>
+        <button id="generalButton" class="btn btn-primary" (click)="getUser()"  type="button">Ingresar</button>
+      </div>
+        <hr>
+        <div>
+        <button id="generalButton" class="btn btn-primary" (click)="principal()" type="button">Atrás</button>
+      </div>
+
+    </div>
+    </div>
+    <div class="flex-item-right"><img id="main"  src="../assets/img/imgMenu.PNG" width="400px"></div>
+  </div>
+</body>
+
+</html>
+

@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="../../css/admin.css">
+<link rel="stylesheet" href="../../css/bootstrap.css">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/colaboradoresAdmin.scss">
+<link rel="stylesheet" href="../../css/colaboradoresAdmin.css">
+
+<div id="main" ng-app>
+
+
+  <nav class="{active}" ng-click="$event.preventDefault()" ng-init="active='home'">
+
+    <ul>
+      <li><a href="/admin">Inicio</a></li>
+      <li><a href="/clientesAdmin">Clientes</a></li>
+      <li><a href="/colaboradoresAdmin" >Colaboradores</a></li>
+      <li><a href="/principal">Salir</a></li>
+    </ul>
+  </nav>
+
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<div class="cards" style="position:center;">
+  <div class="card"  style="background-color:beige ;">
+    <div class="text">
+      <h1>Añadir nuevo colaborador</h1>
+      <p><img src="../../../assets/img/adduser.png" style="width: 150px; height: 140px; position:initial;" align="right"></p>
+     <button id="buttonMostrar" class="btn btn-success pull-right" (click)="newUser()"><a style="color: white; font-size: 20px;">IR</a></button>
+    </div>
+  </div>
+
+  <div class="card"  style="background-color:beige ;">
+    <div class="text">
+      <h1>Lista de colaboradores</h1>
+      <p><img src="../../../assets/img/list.png" style="width: 150px; height: 140px; position:initial;" align="right"></p>
+     <button id="buttonMostrar" class="btn btn-success pull-right" (click)="listCollaborator()"><a style="color: white; font-size: 20px;">IR</a></button>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,28 @@
+body{
+    background-color: #F8F8F7;
+}
+button{
+    width: 200px;
+}
+
+.p-primary{
+    color:#ACA48C;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.link{
+    color: black;
+}
+label{
+    color:#ACA48C;
+    font-weight: bold;
+    font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: sticky;
+    top: 200px;
+    left: 410px;
+
+}
+

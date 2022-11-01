@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/adminProfile.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+  <div id="main" ng-app>
+
+    <nav class="{active}" ng-click="$event.preventDefault()" ng-init="active='home'">
+      <ul>
+        <li><a href="/admin">Datos</a></li>
+        <li><a href="/clientesAdmin">Documentos</a></li>
+        <li><a href="/colaboradoresAdmin" >Historial</a></li>
+        <li style="float:right"><a href="/principal">Salir</a></li>
+      </ul>
+      </nav>
+    </div>
+    <br>
+    <br>
+    <div class="modal-header title-table">
+        <h3>Documentos</h3>
+    </div>
+    <div class="container">
+
+        <table class="table">
+            <thead class="header-table">
+                <tr>
+                    <th scope="col">Documento</th>
+                    <th scope="col">Fecha de inserción</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Ver</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr">
+                    <th scope="row">Explicación del caso</th>
+                    <td>3/2/2022</td>
+                    <td>Aprobado</td>
+                    <td>
+                        <button type="button" class="see-bttn btn btn-primary"><i class="bi bi-file-earmark-plus-fill"></i></button>
+                    </td>
+                </tr>
+                <tr class="tr">
+                    <th scope="row">Copia del título ejecutivo</th>
+                    <td>3/2/2022</td>
+                    <td>Aprobado</td>
+                    <td>
+                        <button type="button" class="see-bttn btn btn-primary"><i class="bi bi-eye"></i></button>
+                    </td>
+                </tr>
+                <tr class="tr">
+                    <th scope="row">Documento secundario</th>
+                    <td>4/3/2022</td>
+                    <td>Rechazado</td>
+                    <td>
+                        <button type="button" class="see-bttn btn btn-primary"><i class="bi bi-eye"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- seeuser Modal -->
+    <div class="modal fade" id="seeuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content modal-form">
+                <div class="modal-header title-form">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Datos</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="modal-header title-form">
+                            <h5>Caso de María Ortiz</h5>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Código</label>
+                                        <input type="text" class="form-control" id="identifyNum" placeholder="3050508"
+                                            readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Cotización Formal</label>
+                                        <div class="row">
+                                        <a class="nav-link"><i class="bi-file-earmark-pdf"></i></a>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Estado del caso</label>
+                                        <p for="recipient-name">*En Proceso*</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Juzgado</label>
+                                        <input type="text" class="form-control" id="identifyNum"
+                                            placeholder="Juzgado ABC" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Demandado</label>
+                                        <input type="text" class="form-control" id="identifyNum"
+                                            placeholder="Demandado ABC" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Abogado a cargo</label>
+                                        <input type="text" class="form-control" id="identifyNum"
+                                            placeholder="Abogado ABC" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

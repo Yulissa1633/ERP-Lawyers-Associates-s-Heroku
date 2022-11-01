@@ -1,0 +1,17 @@
+input.form-control{
+    width: 250px;
+    position: sticky;
+    top: 200px;
+    left: 140px;
+}
+button{
+    position: sticky;
+    top: 240px;
+    left: 160px;
+
+}
+#generalButton{
+    background: #B22837;
+    border: 0;
+    color: white;
+}
