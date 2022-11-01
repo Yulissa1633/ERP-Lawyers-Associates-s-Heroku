@@ -1,9 +1,10 @@
 //Install express server
 const express = require('express');
 const path = require('path');
+const http = require('http');
 
 const app = express();
-const PORT = process.env.PORT || '8080';
+const port = http.createServer(process.env.PORT || 3000);
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/ERP-Lawyers-Associates-s-Heroku'));
@@ -14,5 +15,9 @@ res.sendFile(path.join(__dirname+'/src/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 3000);
-app.set("port", PORT);
+app.set("port", port);
+
+const server = http.createServer(app);
+server.on("error", onError);
+server.on("listening", onListening);
+server.listen(port);
