@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERPCollectionsWebAPI", "ERPCollectionsWebAPI\ERPCollectionsWebAPI.csproj", "{8D786C8E-8030-4A78-93AE-45016B46975C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D786C8E-8030-4A78-93AE-45016B46975C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D786C8E-8030-4A78-93AE-45016B46975C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D786C8E-8030-4A78-93AE-45016B46975C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D786C8E-8030-4A78-93AE-45016B46975C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3DAEB77-BD52-481F-AAC1-325E971D71E1}
+	EndGlobalSection
+EndGlobal
