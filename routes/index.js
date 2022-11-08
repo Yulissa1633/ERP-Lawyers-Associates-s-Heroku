@@ -4,12 +4,14 @@ const path = require('path');
 
 const routes = express.Router();
 
+@Crossorigin
 const getCollaborators = async (req, res, next) => {
       const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
       const collaborators = JSON.parse(data);
       res.json(collaborators);
   };
 
+ @Crossorigin
 const getCollaborator = async (req, res, next) => {
     try {
       const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
@@ -26,6 +28,7 @@ const getCollaborator = async (req, res, next) => {
     }
   };
 
+  @Crossorigin
   const createCollaborators = async (req, res, next) => {
     try {
       const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
@@ -44,6 +47,7 @@ const getCollaborator = async (req, res, next) => {
     }
   };
 
+  @Crossorigin
   const updateCollaborator = async (req, res, next) => {
     try {
       const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
@@ -74,6 +78,7 @@ const getCollaborator = async (req, res, next) => {
     }
   };
 
+  @Crossorigin
   const deleteCollaborator = async (req, res, next) => {
     try {
         const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
