@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const routes = require('./routes/index');
@@ -9,10 +10,11 @@ app.set('port', PORT);
 app.set('env', NODE_ENV);
 app.use(logger('tiny'));
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/', routes);
 app.use(function (req, res, next) {
     //Enabling CORS
-    res.header("Access-Control-Allow-Origin", "https://erplawyerswebapp-ki7v3jvnd-yulissa1633.vercel.app/list-collaborator");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
     next();
