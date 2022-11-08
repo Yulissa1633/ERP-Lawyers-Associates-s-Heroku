@@ -1,7 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const sql = require("mssql");
+const MSSQL = require("./MSSQL");
+const db = new MSSQL("163.178.173.148", "lenguajes", "lg.2022zx", "ERP Collections");
 
 const routes = express.Router();
 
@@ -14,103 +15,76 @@ const config = {
 };
 
 const getCollaborators = async (req, res, next) => {
-  sql.connect(config).then(pool => {
+  try {
+    const { recordset } = await db.execute("SELECT * FROM Collaborator");
 
-    return pool.request().query('SELECT TOP (1000) [idCollaborator],[name],[lastname],[dni],[email]FROM [ERP Collections].[dbo].[Collaborator]')
-
-    }).then(result => {
-
-        res.send(result);
-
-        })
+    res.send(recordset);
+  } catch (err) {
+    console.error(err);
+    res.send([]);
+  }
   };
 
 const getCollaborator = async (req, res, next) => {
-    try {
-      const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
-      const collaborators = JSON.parse(data);
-      const collaboratorsStats = collaborators.find(collaborator => collaborator.idCollaborator === Number(req.params.id));
-      if (!collaboratorsStats) {
-        const err = new Error('Collaborator stats not found');
-        err.status = 404;
-        throw err;
-      }
-      res.json(collaboratorsStats);
-    } catch (e) {
-      next(e);
-    }
+  try {
+    const sql = `SELECT * FROM Collaborator WHERE idCollaborator=${id}`;
+    const { recordset } = await db.execute(sql);
+
+    res.send(recordset);
+  } catch (err) {
+    console.error(err);
+    res.send([]);
+  }
   };
 
   const createCollaborators = async (req, res, next) => {
     try {
-      const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
-      const stats = JSON.parse(data);
       const newStats = {
         idCollaborator: req.body.idCollaborator,
         name: req.body.name,
+        lastname: req.body.lastname,
         dni: req.body.dni,
         email: req.body.email,
       };
-      stats.push(newStats);
-      fs.writeFileSync(path.join(__dirname, './collaborators.json'), JSON.stringify(stats));
-      res.status(201).json(newStats);
-    } catch (e) {
-      next(e);
+      const sql = `INSERT INTO Collaborator VALUES ('${newStats.name}', '${newStats.lastname}', '${newStats.dni}','${newStats.email}')`;
+      await db.execute(sql);
+
+      res.send({ msg: "Insert successfully." });
+    } catch (err) {
+      console.error(err);
+      res.send({ msg: "Insert failed." });
     }
   };
 
   const updateCollaborator = async (req, res, next) => {
     try {
-      const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
-      const collaborators = JSON.parse(data);
-      const collaboratorsStats = collaborators.find(collaborator => collaborator.idCollaborator === Number(req.params.id));
-      if (!collaboratorsStats) {
-        const err = new Error('Collaborator stats not found');
-        err.status = 404;
-        throw err;
-      }
+  
       const newStatsData = {
         idCollaborator: req.body.idCollaborator,
         name: req.body.name,
         dni: req.body.dni,
         email: req.body.email,
-      };
-      const newStats = collaborators.map(collaborator => {
-        if (collaborator.idCollaborator === Number(req.params.id)) {
-          return newStatsData;
-        } else {
-          return collaborator;
-        }
-      });
-      fs.writeFileSync(path.join(__dirname, './collaborators.json'), JSON.stringify(newStats));
-      res.status(200).json(newStatsData);
-    } catch (e) {
-      next(e);
+      }
+      const sql = `UPDATE Collaborator SET name='${newStatsData.name}', email='${newStatsData.email}' dni='${newStatsData.dni}' WHERE idCollaborator=${id}`;
+      await db.execute(sql);
+
+      res.send({ msg: "Updated." });
+    } catch (err) {
+      console.error(err);
+      res.send({ msg: "Update failed." });
     }
   };
 
   const deleteCollaborator = async (req, res, next) => {
+    const { id } = req.params;
     try {
-        const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
-        const collaborators = JSON.parse(data);
-        const collaboratorsStats = collaborators.find(collaborator => collaborator.idCollaborator === Number(req.params.id));
-        if (!collaboratorsStats) {
-          const err = new Error('Collaborator stats not found');
-          err.status = 404;
-          throw err;
-        }
-        const newStats = collaborators.map(collaborator => {
-            if (collaborator.idCollaborator === Number(req.params.id)) {
-              return null;
-            } else {
-              return collaborator;
-            }
-        })
-      .filter(collaborator => collaborator !== null);
-      fs.writeFileSync(path.join(__dirname, './collaborators.json'), JSON.stringify(newStats));
-      res.status(200).end();
-    } catch (e) {
-      next(e);
+      const sql = `DELETE FROM Collaborator WHERE idCollaborator=${id}`;
+      await db.execute(sql);
+
+      res.send({ msg: "Deleted." });
+    } catch (err) {
+      console.error(err);
+      res.send({ msg: "Delete failed." });
     }
   };
 
