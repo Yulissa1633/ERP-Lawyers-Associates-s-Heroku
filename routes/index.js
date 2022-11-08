@@ -1,13 +1,28 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const sql = require("mssql");
 
 const routes = express.Router();
 
+const config = {
+  user: 'lenguajes',
+  password: 'lg.2022zx',
+  server: '163.178.173.148',
+  database: 'ERP Collections',
+  trustServerCertificate: true
+};
+
 const getCollaborators = async (req, res, next) => {
-      const data = fs.readFileSync(path.join(__dirname, './collaborators.json'));
-      const collaborators = JSON.parse(data);
-      res.json(collaborators);
+  sql.connect(config).then(pool => {
+
+    return pool.request().query('SELECT TOP (1000) [idCollaborator],[name],[lastname],[dni],[email]FROM [ERP Collections].[dbo].[Collaborator]')
+
+    }).then(result => {
+
+        res.send(result);
+
+        })
   };
 
 const getCollaborator = async (req, res, next) => {
