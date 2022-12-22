@@ -31,7 +31,7 @@ const getCollaborator = async (req, res, next) => {
     const sql = `SELECT * FROM Collaborator WHERE idCollaborator=${id}`;
     const { recordset } = await db.execute(sql);
 
-    res.send(recordset);
+    res.send(recordset[0]);
   } catch (err) {
     console.error(err);
     res.send([]);
@@ -106,7 +106,7 @@ const getCollaborator = async (req, res, next) => {
       const sql = `SELECT * FROM Client WHERE idClient=${id}`;
       const { recordset } = await db.execute(sql);
   
-      res.send(recordset);
+      res.send(recordset[0]);
     } catch (err) {
       console.error(err);
       res.send([]);
@@ -183,10 +183,10 @@ const getCollaborator = async (req, res, next) => {
     const getUser = async (req, res, next) => {
       const { id } = req.params;
       try {
-        const sql = `SELECT * FROM [User] WHERE idUser=${id}`;
+        const sql = `SELECT [User].idUser, [User].userEmail, [User].[password], [User].RoleId FROM [User] WHERE idUser=${id}`;
         const { recordset } = await db.execute(sql);
     
-        res.send(recordset);
+        res.send(recordset[0]);
       } catch (err) {
         console.error(err);
         res.send([]);
